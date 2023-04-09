@@ -17,11 +17,29 @@
 
 .btnContainer {
   width: 60px;
-  height: 60px;
   position: absolute;
   right: 20px;
   bottom: 40px;
   display: flex;
   flex-direction: column;
   z-index: 5;
+}
+
+.btn {
+  background-color: #414f57;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  margin-bottom: 5px;
+  transition: all 0.2s linear;
+}
+
+/* .btn:hover {
+  transform: scale(0.9);
+} */
+
+.btnImage {
+  filter: invert(1);
+  width: 32px;
 }

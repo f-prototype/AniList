@@ -1,11 +1,16 @@
+import { WrapElemInfo } from '../wrap-elem-info/WrapElemInfo';
 import styles from './WrapElem.module.css';
 
-export const WrapElem = ({ info, img }) => {
+export const WrapElem = ({ data, rang }) => {
   return (
     <div className={styles.container}>
-      <h1>{info}</h1>
+      <WrapElemInfo data={data} raiting={rang} />
       <div className={styles.imgContainer}>
-        <img src={img} className={styles.img} alt="background" />
+        <img
+          src={data.attributes.coverImage.original}
+          className={styles.img}
+          alt="background"
+        />
       </div>
     </div>
   );

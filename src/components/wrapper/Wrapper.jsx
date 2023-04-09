@@ -1,6 +1,7 @@
 import styles from './Wrapper.module.css';
-// import back from '../../img/background.jpg';
 import { WrapElem } from '../wrap-elem/WrapElem';
+import btnLeft from '../../img/left.svg';
+import btnRight from '../../img/right.svg';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -11,21 +12,28 @@ export const Wrapper = ({ arr }) => {
   const [stop, setStop] = useState(false);
   const [aniList, setAniList] = useState('');
   const wrapInner = useRef(null);
+
   useEffect(() => {
-    fetch(
-      'https://kitsu.io/api/edge/anime?page%5Blimit%5D=13&page%5Boffset%5D=0&sort=popularityRank'
-    )
+    fetch('https://kitsu.io/api/edge/trending/anime')
       .then((response) => response.json())
       .then((result) => {
         setAniList(result);
       });
   }, []);
 
+  useEffect(() => {
+    fetch('https://kitsu.io/api/edge/castings')
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+      });
+  });
+
   const sliderInterval = useCallback(() => {
-    counter === arr.length - 1
+    counter === aniList.data.length - 1
       ? setCounter(0)
       : setCounter((counter) => counter + 1);
-  }, [arr, counter]);
+  }, [aniList, counter]);
 
   useEffect(() => {
     wrapInner.current.style.transform = `translateX(${-100 * counter}%)`;
@@ -41,10 +49,14 @@ export const Wrapper = ({ arr }) => {
 
   const onButtonClick = (event) => {
     setStop(true);
-    if (event.target.value === 'r') {
-      counter === arr.length - 1 ? setCounter(0) : setCounter(counter + 1);
+    if (event.target.parentElement.value === 'r') {
+      counter === aniList.data.length - 1
+        ? setCounter(0)
+        : setCounter(counter + 1);
     } else {
-      counter === 0 ? setCounter(arr.length - 1) : setCounter(counter - 1);
+      counter === 0
+        ? setCounter(aniList.data.length - 1)
+        : setCounter(counter - 1);
     }
   };
 
@@ -52,19 +64,20 @@ export const Wrapper = ({ arr }) => {
     <div className={styles.container}>
       <div className={styles.wrapInner} ref={wrapInner}>
         {aniList &&
-          aniList.data.map((elem) => {
-            return (
-              <WrapElem
-                info={22}
-                img={elem.attributes.coverImage.original}
-                key={elem.id}
-              />
-            );
+          aniList.data.map((elem, index) => {
+            return <WrapElem data={elem} rang={index + 1} key={elem.id} />;
           })}
       </div>
-      <div className={styles.btnContainer} onClick={onButtonClick}>
-        <button value="r">R</button>
-        <button value="l">L</button>
+      <div
+        className={styles.btnContainer}
+        onClick={(event) => onButtonClick(event)}
+      >
+        <button value="r" className={styles.btn}>
+          <img src={btnRight} alt="right" className={styles.btnImage} />
+        </button>
+        <button value="l" className={styles.btn}>
+          <img src={btnLeft} alt="left" className={styles.btnImage} />
+        </button>
       </div>
     </div>
   );

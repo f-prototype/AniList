@@ -1,0 +1,40 @@
+.container {
+  position: absolute;
+  left: 20px;
+  bottom: 40px;
+  z-index: 35;
+  max-width: 800px;
+  text-align: left;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.6em;
+  font-weight: 300;
+  margin-bottom: 30px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.raiting {
+  color: aquamarine;
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.name {
+  font-size: 50px;
+  text-shadow: 0 0 5px #000;
+}
+
+.btn {
+  border: 0;
+  border-radius: 20px;
+  background-color: aquamarine;
+  padding: 10px 15px;
+  outline: 0;
+  font-weight: 600;
+}
