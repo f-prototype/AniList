@@ -21,14 +21,6 @@ export const Wrapper = ({ arr }) => {
       });
   }, []);
 
-  useEffect(() => {
-    fetch('https://kitsu.io/api/edge/castings')
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-      });
-  });
-
   const sliderInterval = useCallback(() => {
     counter === aniList.data.length - 1
       ? setCounter(0)

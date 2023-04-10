@@ -25,14 +25,15 @@ root.render(
 //   .then((response) => response.json())
 //   .then((result) => {
 //     a = result.data;
-//   })
-//   .then((result) => {
-//     a.map((el) => {
-//       arr.push(el.attributes.title);
-//     });
-//     arr.sort();
-//     console.log(arr);
+//     console.log(result);
 //   });
+// .then((result) => {
+//   a.map((el) => {
+//     arr.push(el.attributes.title);
+//   });
+//   arr.sort();
+//   console.log(arr);
+// });
 
 //ФИЛЬТРАЦИЯ КАТЕГОРИЙ
 
