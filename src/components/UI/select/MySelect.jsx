@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { CheckBox } from '../checkbox/CheckBox';
 import styles from './MySelect.module.css';
 
-export const MySelect = ({ elems, def, callbaks }) => {
+export const MySelect = ({ elems, def, callbaks, select }) => {
   const ref = useRef(null);
 
   const onSelectClick = (event) => {
@@ -25,9 +25,17 @@ export const MySelect = ({ elems, def, callbaks }) => {
       <div className={styles.genresContainer} ref={ref}>
         {elems.map((el) => {
           return (
-            <div className={styles.genre} onClick={onOptionClick} key={el.id}>
+            <div
+              className={styles.genre}
+              onClick={onOptionClick}
+              key={el.attributes.slug}
+            >
               <label className={styles.label}>
-                <CheckBox inf={el.attributes.slug} callbaks={callbaks} />
+                <CheckBox
+                  inf={el.attributes.slug}
+                  callbaks={callbaks}
+                  check={select.includes(el.attributes.slug)}
+                />
                 <span>{el.attributes.title}</span>
               </label>
             </div>

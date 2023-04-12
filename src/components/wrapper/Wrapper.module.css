@@ -35,9 +35,9 @@
   transition: all 0.2s linear;
 }
 
-/* .btn:hover {
-  transform: scale(0.9);
-} */
+.btn:hover {
+  transform: scale(0.92);
+}
 
 .btnImage {
   filter: invert(1);

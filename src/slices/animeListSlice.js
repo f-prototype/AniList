@@ -2,10 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   list: '',
-  genres: [],
-  season: [],
+  genres: ['action'],
+  season: ['winter'],
   select: '',
   counter: 0,
+  age: [2018, 2019, 2020, 2021, 2022, 2023],
+  sort: 'popularityRank',
 };
 
 const animeListSlice = createSlice({
@@ -33,6 +35,12 @@ const animeListSlice = createSlice({
     removeSeason: (state, action) => {
       state.season = state.season.filter((genre) => genre !== action.payload);
     },
+    setAge: (state, action) => {
+      state.age = action.payload;
+    },
+    setSort: (state, action) => {
+      state.sort = action.payload;
+    },
   },
 });
 
@@ -44,6 +52,8 @@ export const {
   removeGenre,
   setSeason,
   removeSeason,
+  setAge,
+  setSort,
 } = animeListSlice.actions;
 
 export default animeListSlice.reducer;

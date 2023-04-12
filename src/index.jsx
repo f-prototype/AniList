@@ -37,9 +37,9 @@ root.render(
 
 //ФИЛЬТРАЦИЯ КАТЕГОРИЙ
 
-// fetch('https://kitsu.io/api/edge/anime?filter[categories]=action,drama')
-//   .then((response) => response.json())
-//   .then((result) => console.log(result));
+fetch('https://kitsu.io/api/edge/anime?seasonYear=1998')
+  .then((response) => response.json())
+  .then((result) => console.log(result));
 // fetch('https://kitsu.io/api/edge/anime/11157/genres')
 //   .then((response) => response.json())
 //   .then((result) => console.log(result));

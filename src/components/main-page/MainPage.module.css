@@ -1,3 +1,11 @@
 .container {
   min-height: 200vh;
 }
+
+.options {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 40px;
+  padding: 0 50px;
+}

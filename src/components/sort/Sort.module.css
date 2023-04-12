@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  position: relative;
+  width: 180px;
+  height: 35px;
+  justify-content: center;
+  font-size: 16px;
+  color: #d9d9d9;
+}
+
+.containerOptions {
+  margin-left: 10px;
+  background-color: transparent;
+  color: #fff;
+  font-size: 16px;
+  height: 35px;
+  overflow: hidden;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.default::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background: url('../../img/right.svg');
+  background-size: cover;
+  transform: rotate(90deg);
+  filter: invert(1);
+  position: absolute;
+  top: calc(50% - 12px);
+  right: -12px;
+  transition: all 0.2s linear;
+  z-index: 4;
+  cursor: pointer;
+}
+
+.default {
+  color: #d9d9d9;
+  height: 35px;
+}
+
+.open {
+  height: 105px;
+}
+
+.option {
+  height: 35px;
+}
+
+.open .default::after {
+  transform: rotate(-90deg);
+}
+
+.text,
+.option,
+.default {
+  display: flex;
+  align-items: center;
+}
