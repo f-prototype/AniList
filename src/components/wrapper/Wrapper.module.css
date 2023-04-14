@@ -37,6 +37,7 @@
 
 .btn:hover {
   transform: scale(0.92);
+  filter: brightness(0.83);
 }
 
 .btnImage {

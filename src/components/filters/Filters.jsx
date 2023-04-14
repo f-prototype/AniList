@@ -1,7 +1,7 @@
 import { MySelect } from '../UI/select/MySelect';
 import { useState, useMemo } from 'react';
 import styles from './Filters.module.css';
-import { setGenres, removeGenre } from '../../slices/animeListSlice';
+import { setGenres, removeGenre, reset } from '../../slices/animeListSlice';
 import { setSeason, removeSeason } from '../../slices/animeListSlice';
 import MultiRangeSlider from '../multiRangeSlider/MultiRangeSlider';
 import { setAge } from '../../slices/animeListSlice';
@@ -34,15 +34,10 @@ export const Filters = () => {
         addGenres(sorted);
       });
   }, []);
-  const onChange = ({ min, max }) => {
-    let result = [];
-    for (let i = min; i <= max; i++) {
-      result.push(i);
-    }
-    dispatch(setAge(result));
-  };
+  const onChange = (value) => dispatch(setAge(value));
+
   return (
-    <div className={styles.container}>
+    <form className={styles.container}>
       <MySelect
         elems={genres}
         def="Genres"
@@ -58,8 +53,16 @@ export const Filters = () => {
       <MultiRangeSlider
         min={1998}
         max={2023}
-        onChange={({ min, max }) => onChange({ min, max })}
+        onChange={(value) => onChange(value)}
       />
-    </div>
+      <span
+        onClick={() => {
+          dispatch(reset());
+        }}
+        className={styles.reset}
+      >
+        Clear Filters
+      </span>
+    </form>
   );
 };

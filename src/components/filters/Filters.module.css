@@ -1,5 +1,23 @@
 .container {
-  width: calc(100% - 100px);
-  margin: auto;
+  width: 700px;
   display: flex;
+  justify-content: space-evenly;
+}
+
+.reset {
+  display: flex;
+  height: 35px;
+  align-items: center;
+  background-color: #566269;
+  color: #dadada;
+  border-radius: 5px;
+  font-size: 13px;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.reset:hover {
+  transform: scale(0.95);
+  filter: brightness(0.9);
 }

@@ -1,12 +1,9 @@
-import React, { useCallback, useEffect, useState, useRef } from 'react';
-import PropTypes from 'prop-types';
+import { useCallback, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import styles from './MultiRangeSlider.module.css';
 
 const MultiRangeSlider = ({ min, max, onChange }) => {
-  const [minVal, setMinVal] = useState(min);
-  const [maxVal, setMaxVal] = useState(max);
-  const minValRef = useRef(min);
-  const maxValRef = useRef(max);
+  const value = useSelector((state) => state.animeList.age);
   const range = useRef(null);
 
   // Convert to percentage
@@ -15,31 +12,17 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
     [min, max]
   );
 
-  // Set width of the range to decrease from the left side
+  // Range length
   useEffect(() => {
-    const minPercent = getPercent(minVal);
-    const maxPercent = getPercent(maxValRef.current);
-
-    if (range.current) {
-      range.current.style.left = `${minPercent}%`;
-      range.current.style.width = `${maxPercent - minPercent}%`;
+    if (value === '') {
+      range.current.style.width = `100%`;
+      return;
     }
-  }, [minVal, getPercent]);
-
-  // Set width of the range to decrease from the right side
-  useEffect(() => {
-    const minPercent = getPercent(minValRef.current);
-    const maxPercent = getPercent(maxVal);
-
+    const valuePercent = getPercent(value);
     if (range.current) {
-      range.current.style.width = `${maxPercent - minPercent}%`;
+      range.current.style.width = `${valuePercent}%`;
     }
-  }, [maxVal, getPercent]);
-
-  // Get min and max values when their state changes
-  useEffect(() => {
-    onChange({ min: minVal, max: maxVal });
-  }, [minVal, maxVal, onChange]);
+  }, [value, getPercent]);
 
   return (
     <div className={styles.container}>
@@ -47,24 +30,10 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
         type="range"
         min={min}
         max={max}
-        value={minVal}
+        value={value === '' ? max : value}
         onChange={(event) => {
-          const value = Math.min(Number(event.target.value), maxVal - 1);
-          setMinVal(value);
-          minValRef.current = value;
-        }}
-        className={`${styles.thumb}  ${styles.thumbLeft}`}
-        style={{ zIndex: minVal > max - 100 && '5' }}
-      />
-      <input
-        type="range"
-        min={min}
-        max={max}
-        value={maxVal}
-        onChange={(event) => {
-          const value = Math.max(Number(event.target.value), minVal + 1);
-          setMaxVal(value);
-          maxValRef.current = value;
+          const value = event.target.value;
+          onChange(value);
         }}
         className={`${styles.thumb}  ${styles.thumbRight}`}
       />
@@ -72,17 +41,12 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
       <div className={styles.slider}>
         <div className={styles.slider__track} />
         <div ref={range} className={styles.slider__range} />
-        <div className={styles.slider__leftValue}>{minVal}</div>
-        <div className={styles.slider__rightValue}>{maxVal}</div>
+        <div className={styles.slider__rightValue}>
+          {value === '' ? max : value}
+        </div>
       </div>
     </div>
   );
-};
-
-MultiRangeSlider.propTypes = {
-  min: PropTypes.number.isRequired,
-  max: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
 
 export default MultiRangeSlider;

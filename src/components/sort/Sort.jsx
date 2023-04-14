@@ -1,16 +1,21 @@
+import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { setSort } from '../../slices/animeListSlice';
-import { useDispatch } from 'react-redux/es/exports';
 import { useRef } from 'react';
 import styles from './Sort.module.css';
 
 export const Sort = () => {
   const ref = useRef(null);
+  const sort = useSelector((state) => state.animeList.sort);
   const dispatch = useDispatch();
 
   const onOptionClick = (event) => {
     let value = event.target.innerHTML;
     ref.current.innerHTML = value;
-    dispatch(setSort(value.toLowerCase() + 'Rank'));
+    if (value === 'Popularity') {
+      dispatch(setSort(value.toLowerCase() + 'Rank'));
+    } else {
+      dispatch(setSort('-' + value.toLowerCase() + 'Rating'));
+    }
   };
 
   return (
@@ -24,13 +29,13 @@ export const Sort = () => {
           }
           ref={ref}
         >
-          Popularity
+          {sort === 'popularityRank' ? 'Popularity' : 'Average'}
         </div>
         <div className={styles.option} onClick={onOptionClick}>
           Popularity
         </div>
         <div className={styles.option} onClick={onOptionClick}>
-          Rating
+          Average
         </div>
       </div>
     </div>
