@@ -6,3 +6,23 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+.btn {
+  width: 120px;
+  height: 30px;
+  margin: 30px 0px;
+  border: 0;
+  border-radius: 20px;
+  background-color: aquamarine;
+  outline: 0;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0px 0px 10px rgb(105, 209, 174);
+  cursor: pointer;
+  transition: all 0.2s linear;
+  text-decoration: none;
+}
+
+.btn:hover {
+  box-shadow: 0px 0px 3px rgb(105, 209, 174);
+}

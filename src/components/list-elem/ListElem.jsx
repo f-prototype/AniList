@@ -2,11 +2,20 @@ import { Link } from 'react-router-dom';
 import style from './ListElem.module.css';
 import rating from '../../img/popcorn.svg';
 import top from '../../img/top.svg';
+import { useDispatch } from 'react-redux';
+import { setSelect } from '../../slices/animeListSlice';
 
 function ListElem({ info }) {
+  const dispatch = useDispatch();
   return (
-    <div className={style.elem}>
-      <Link to={info.attributes.slug} className="link">
+    <Link to={info.attributes.slug} className="link">
+      <div
+        className={style.elem}
+        onClick={() => {
+          localStorage.setItem('anime', JSON.stringify(info));
+          dispatch(setSelect(info));
+        }}
+      >
         <div className={style.imgContainer}>
           <img
             src={info.attributes.posterImage.original}
@@ -40,8 +49,8 @@ function ListElem({ info }) {
             </div>
           </div>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }
 

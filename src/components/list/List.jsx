@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { setList } from '../../slices/animeListSlice';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './List.module.css';
 import ListElem from '../list-elem/ListElem';
 
-let count = 0;
 export const List = () => {
+  const [count, setCount] = useState(0);
   const genres = useSelector((state) => state.animeList.genres);
   const season = useSelector((state) => state.animeList.season);
   const age = useSelector((state) => state.animeList.age);
@@ -27,18 +27,25 @@ export const List = () => {
     fetch(
       `https://kitsu.io/api/edge/anime?filter[categories]=${genres.join()}&filter[season]=${season.join()}${
         age && `&filter[seasonYear]=${age}`
-      }&sort=${sort}&page%5Blimit%5D=20&page%5Boffset%5D=${count}'`
+      }&sort=${sort}&page%5Blimit%5D=20&page%5Boffset%5D=${count + 20}'`
     )
       .then((response) => response.json())
-      .then((result) => dispatch(setList(list.concat(result.data))));
+      .then((result) => {
+        dispatch(setList(list.concat(result.data)));
+        setCount((count) => count + 20);
+      });
   };
 
   return (
-    <div className={styles.container}>
-      {list.map((elem) => {
-        return <ListElem info={elem} />;
-      })}
-      <button onClick={() => onLoadMore(count + 20)}>More</button>
-    </div>
+    <>
+      <div className={styles.container}>
+        {list.map((elem) => {
+          return <ListElem info={elem} key={elem.id} />;
+        })}
+      </div>
+      <button onClick={() => onLoadMore(count)} className={styles.btn}>
+        More
+      </button>
+    </>
   );
 };

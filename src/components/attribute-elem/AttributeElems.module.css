@@ -1,0 +1,30 @@
+.attributeElem {
+  display: flex;
+  min-height: 62.5px;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid grey;
+  margin-left: 20px;
+}
+
+.status {
+  width: 25%;
+  text-align: left;
+  font-weight: 600;
+}
+
+.statusInfo {
+  width: 70%;
+  text-align: left;
+  padding-left: 10px;
+}
+
+@media (max-width: 460px) {
+  .status {
+    font-size: 14px;
+  }
+  .statusInfo {
+    font-size: 12px;
+    padding-left: 30px;
+  }
+}

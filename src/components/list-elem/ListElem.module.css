@@ -1,6 +1,6 @@
 .elem {
   width: 210px;
-  margin: 15px 30px;
+  height: 100%;
   text-align: center;
   background-color: #3a4750;
   transition: all 0.3s linear;
@@ -24,6 +24,7 @@
 .img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   transition: all 0.3s linear;
 }
 

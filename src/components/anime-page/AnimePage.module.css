@@ -1,0 +1,13 @@
+.container {
+  width: 80%;
+  padding-top: 60px;
+  text-align: center;
+  margin: auto;
+  color: #fff;
+}
+
+.name {
+  font-size: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

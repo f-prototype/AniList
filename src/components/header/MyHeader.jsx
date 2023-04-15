@@ -1,5 +1,6 @@
 import { Form } from '../form/Form';
 import styles from './MyHeader.module.css';
+import { Link } from 'react-router-dom';
 import logo from '../../img/logo.png';
 import { useRef } from 'react';
 
@@ -14,9 +15,11 @@ export const MyHeader = () => {
   };
   return (
     <div className={styles.container} ref={elem}>
-      <div className={styles.logo}>
-        <img src={logo} alt="logo" />
-      </div>
+      <Link to="/">
+        <div className={styles.logo}>
+          <img src={logo} alt="logo" />
+        </div>
+      </Link>
       <Form />
     </div>
   );

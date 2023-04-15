@@ -1,0 +1,23 @@
+.descriptionContainer {
+  margin-top: 40px;
+}
+
+.description {
+  text-align: left;
+}
+
+.description h2 {
+  margin-bottom: 20px;
+}
+.red {
+  color: aquamarine;
+}
+
+@media (max-width: 660px) {
+  .description {
+    text-align: center;
+  }
+  .description p {
+    text-align: left;
+  }
+}

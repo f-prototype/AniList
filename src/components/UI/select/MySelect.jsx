@@ -16,7 +16,7 @@ export const MySelect = ({ elems, def, callbaks, select }) => {
     event.stopPropagation();
   };
   const handleClickOutside = () => {
-    ref.current.classList.remove(styles.block);
+    ref.current && ref.current.classList.remove(styles.block);
     document.removeEventListener('click', handleClickOutside);
   };
   return (

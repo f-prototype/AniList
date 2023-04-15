@@ -1,0 +1,70 @@
+.container {
+  width: 100px;
+  min-height: 30px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #212734;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.default::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 5px;
+  right: 3px;
+  background-image: url('../../img/right.svg');
+  background-size: cover;
+  transform: rotate(90deg);
+  filter: invert(1);
+  transition: all 0.2s linear;
+}
+
+.rotate::after {
+  transform: rotate(-90deg);
+}
+
+.episodContainer {
+  width: 100%;
+  height: 0;
+  overflow-y: scroll;
+  transition: all 0.2s linear;
+}
+
+.episodContainer::-webkit-scrollbar {
+  width: 5px;
+  background: transparent;
+}
+
+.episodContainer::-webkit-scrollbar-thumb {
+  width: 5px;
+  height: 15px;
+  background-color: #313a3f;
+  border-radius: 3px;
+}
+
+.open {
+  height: 150px;
+}
+
+.default {
+  width: 100%;
+  height: 30px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.episod {
+  color: aliceblue;
+  width: 100%;
+  height: 30px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,40 @@
+.mainInfo {
+  display: flex;
+}
+
+.imgContainer {
+  width: 250px;
+  height: 375px;
+  background-color: blanchedalmond;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+}
+
+.attributesContainer {
+  width: calc(100% - 250px);
+}
+
+@media (max-width: 660px) {
+  .mainInfo {
+    flex-direction: column;
+    align-items: center;
+  }
+  .attributesContainer {
+    width: 90%;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 460px) {
+  .attributesContainer {
+    width: 95%;
+  }
+}
+
+.link {
+  color: aquamarine;
+  margin-right: 5px;
+}

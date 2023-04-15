@@ -37,4 +37,11 @@
   padding: 10px 15px;
   outline: 0;
   font-weight: 600;
+  box-shadow: 0px 0px 10px rgb(105, 209, 174);
+  cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.btn:hover {
+  box-shadow: 0px 0px 5px rgb(105, 209, 174);
 }
