@@ -12,7 +12,6 @@ export const AnimeEpisodes = ({ id }) => {
     )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         setEpisodes(result);
       });
   }, [id]);

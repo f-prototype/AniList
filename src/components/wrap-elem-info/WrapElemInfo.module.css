@@ -26,7 +26,7 @@
 }
 
 .name {
-  font-size: 50px;
+  font-size: 40px;
   text-shadow: 0 0 5px #000;
 }
 
@@ -40,8 +40,30 @@
   box-shadow: 0px 0px 10px rgb(105, 209, 174);
   cursor: pointer;
   transition: all 0.2s linear;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .btn:hover {
   box-shadow: 0px 0px 5px rgb(105, 209, 174);
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
+  object-fit: cover;
+  margin-right: 5px;
+}
+
+.info {
+  width: 250px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 15px;
+  margin: 10px 0px;
+}
+
+.infoElem {
+  display: flex;
+  align-items: center;
 }

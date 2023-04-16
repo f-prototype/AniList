@@ -20,12 +20,13 @@ export const AnimeInfo = ({ info }) => {
               to="/"
               onClick={() => dispatch(resetGenres(elem.attributes.slug))}
               className={styles.link}
+              key={elem.id}
             >
               {elem.attributes.name}
             </Link>
           );
         }
-        setCategories(genresFetch);
+        genresFetch.length ? setCategories(genresFetch) : setCategories(null);
       });
   }, [dispatch, info]);
 
@@ -42,7 +43,7 @@ export const AnimeInfo = ({ info }) => {
         <AttributeElem name="Status" info={info.attributes.status} />
         <AttributeElem name="Episodes" info={info.attributes.episodeLength} />
         <AttributeElem name="Type" info={info.attributes.subtype} />
-        <AttributeElem name="Genres" info={categories} />
+        <AttributeElem name="Genres" info={categories ? categories : '-'} />
         <AttributeElem name="Age Raiting" info={info.attributes.ageRating} />
         <AttributeElem
           name="Popularity Rang"

@@ -5,6 +5,7 @@
 }
 
 .input {
+  position: relative;
   width: 100%;
   min-height: 34px;
   background-color: #414f57;
@@ -14,6 +15,7 @@
   outline: 0;
   color: #dadada;
   font-size: 14px;
+  z-index: 4;
 }
 
 .input::-webkit-input-placeholder {
@@ -33,6 +35,7 @@
   height: 26px;
   transition: all 0.2s linear;
   cursor: pointer;
+  z-index: 5;
 }
 
 .btn:hover {
@@ -41,4 +44,39 @@
 
 .search {
   width: 100%;
+}
+
+.searchInner {
+  position: absolute;
+  top: 17px;
+  left: 0;
+  width: 100%;
+  height: 0;
+  /* background-color: #4c5d67; */
+  background-color: transparent;
+  border: 1px solid black;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  transition: all 0.2s linear;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  overflow-y: scroll;
+  cursor: pointer;
+}
+
+.searchInner::-webkit-scrollbar {
+  width: 5px;
+  background: transparent;
+}
+
+.searchInner::-webkit-scrollbar-thumb {
+  width: 5px;
+  height: 5px;
+  background-color: #414f57;
+  border-radius: 3px;
+}
+
+.open {
+  height: 320px;
+  padding-top: 20px;
 }
