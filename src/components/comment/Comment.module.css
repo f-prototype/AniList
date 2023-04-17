@@ -1,0 +1,50 @@
+.container {
+  width: 100%;
+  color: #fff;
+  padding: 10px 0px;
+  border-bottom: 1px solid #000;
+  --wh: 64px;
+}
+
+.imgContainer img {
+  border-radius: 50%;
+  width: var(--wh);
+  height: var(--wh);
+  box-shadow: 0px 0px 5px #000;
+}
+
+.infoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.info {
+  width: calc(100% - var(--wh));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.imgContainer {
+  margin-right: 20px;
+}
+
+.data {
+  font-size: 11px;
+  color: #ccc;
+}
+
+.likes {
+  display: flex;
+  align-items: center;
+}
+
+.textContainer {
+  text-align: left;
+}

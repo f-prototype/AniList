@@ -37,9 +37,7 @@ root.render(
 
 //ФИЛЬТРАЦИЯ КАТЕГОРИЙ
 
-// fetch(
-//   'https://kitsu.io/api/edge/anime/1/episodes?page%5Blimit%5D=20&page%5Boffset%5D=0'
-// )
+// fetch('https://kitsu.io/api/edge/media-reactions/261/user')
 //   .then((response) => response.json())
 //   .then((result) => console.log(result));
 // fetch('https://kitsu.io/api/edge/anime/11157/genres')

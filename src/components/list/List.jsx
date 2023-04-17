@@ -3,6 +3,7 @@ import { setList } from '../../slices/animeListSlice';
 import { useEffect, useState } from 'react';
 import styles from './List.module.css';
 import ListElem from '../list-elem/ListElem';
+import { Spinner } from '../spiner/Spinner';
 
 export const List = () => {
   const [count, setCount] = useState(0);
@@ -39,9 +40,16 @@ export const List = () => {
   return (
     <>
       <div className={styles.container}>
-        {list.map((elem) => {
-          return <ListElem info={elem} key={elem.id} />;
-        })}
+        {list.length ? (
+          list.map((elem) => {
+            return <ListElem info={elem} key={elem.id} />;
+          })
+        ) : (
+          <div className={styles.spinnerContainer}>
+            <Spinner />
+          </div>
+        )}
+        {/* <Spinner /> */}
       </div>
       <button onClick={() => onLoadMore(count)} className={styles.btn}>
         More

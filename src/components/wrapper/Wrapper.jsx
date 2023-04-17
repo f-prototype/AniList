@@ -1,5 +1,6 @@
 import styles from './Wrapper.module.css';
 import { WrapElem } from '../wrap-elem/WrapElem';
+import { Spinner } from '../spiner/Spinner';
 import btnLeft from '../../img/left.svg';
 import btnRight from '../../img/right.svg';
 import { useRef } from 'react';
@@ -7,7 +8,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useCallback } from 'react';
 
-export const Wrapper = ({ arr }) => {
+export const Wrapper = () => {
   const [counter, setCounter] = useState(0);
   const [stop, setStop] = useState(false);
   const [aniList, setAniList] = useState('');
@@ -55,10 +56,13 @@ export const Wrapper = ({ arr }) => {
   return (
     <div className={styles.container}>
       <div className={styles.wrapInner} ref={wrapInner}>
-        {aniList &&
+        {aniList ? (
           aniList.data.map((elem, index) => {
             return <WrapElem data={elem} rang={index + 1} key={elem.id} />;
-          })}
+          })
+        ) : (
+          <Spinner />
+        )}
       </div>
       <div
         className={styles.btnContainer}
