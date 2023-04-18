@@ -8,26 +8,13 @@ export const Comments = ({ id }) => {
 
   useEffect(() => {
     fetch(
-      `https://kitsu.io/api/edge/media-reactions?filter%5BanimeId%5D=${id}&page%5Blimit%5D=6&page%5Boffset%5D=0`
+      `https://kitsu.io/api/edge/media-reactions?filter%5BanimeId%5D=${id}&page%5Blimit%5D=6&page%5Boffset%5D=${count}`
     )
       .then((response) => response.json())
       .then((result) => {
-        setComments(result.data);
+        setComments((comments) => [...comments, ...result.data]);
       });
-  }, [id]);
-
-  const fetchData = () => {
-    fetch(
-      `https://kitsu.io/api/edge/media-reactions?filter%5BanimeId%5D=${id}&page%5Blimit%5D=6&page%5Boffset%5D=${
-        count + 6
-      }`
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        setComments([...comments, ...result.data]);
-        setCount((count) => count + 6);
-      });
-  };
+  }, [id, count]);
 
   return (
     <div className={styles.container}>
@@ -35,7 +22,10 @@ export const Comments = ({ id }) => {
         comments.map((el) => {
           return <Comment info={el} key={el.id} />;
         })}
-      <button onClick={() => fetchData()} className={styles.btn}>
+      <button
+        onClick={() => setCount((count) => count + 6)}
+        className={styles.btn}
+      >
         More
       </button>
     </div>

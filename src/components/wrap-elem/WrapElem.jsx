@@ -1,7 +1,8 @@
+import { memo } from 'react';
 import { WrapElemInfo } from '../wrap-elem-info/WrapElemInfo';
 import styles from './WrapElem.module.css';
 
-export const WrapElem = ({ data, rang }) => {
+export const WrapElem = memo(({ data, rang }) => {
   return (
     <div className={styles.container}>
       <WrapElemInfo data={data} raiting={rang} />
@@ -14,4 +15,4 @@ export const WrapElem = ({ data, rang }) => {
       </div>
     </div>
   );
-};
+});

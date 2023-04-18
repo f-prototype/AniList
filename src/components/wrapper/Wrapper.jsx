@@ -1,18 +1,40 @@
-import styles from './Wrapper.module.css';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import { WrapElem } from '../wrap-elem/WrapElem';
 import { Spinner } from '../spiner/Spinner';
 import btnLeft from '../../img/left.svg';
 import btnRight from '../../img/right.svg';
-import { useRef } from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { useCallback } from 'react';
+import styles from './Wrapper.module.css';
 
 export const Wrapper = () => {
-  const [counter, setCounter] = useState(0);
-  const [stop, setStop] = useState(false);
-  const [aniList, setAniList] = useState('');
+  const intervalRef = useRef();
+  const countRef = useRef(0);
   const wrapInner = useRef(null);
+  const [aniList, setAniList] = useState('');
+
+  const move = useCallback(
+    (route) => {
+      if (route === 'r') {
+        countRef.current === aniList.data.length - 1
+          ? (countRef.current = 0)
+          : countRef.current++;
+      } else {
+        countRef.current === 0
+          ? (countRef.current = aniList.data.length - 1)
+          : countRef.current--;
+      }
+      translate(countRef.current);
+    },
+    [aniList]
+  );
+
+  const translate = (count) => {
+    wrapInner.current.style.transform = `translateX(${-100 * count}%)`;
+  };
+
+  const onButtonClick = (event) => {
+    clearInterval(intervalRef.current);
+    event.target.parentElement.value === 'r' ? move('r') : move('l');
+  };
 
   useEffect(() => {
     fetch('https://kitsu.io/api/edge/trending/anime')
@@ -20,38 +42,13 @@ export const Wrapper = () => {
       .then((result) => {
         setAniList(result);
       });
+    return () => clearInterval(intervalRef.current);
   }, []);
 
-  const sliderInterval = useCallback(() => {
-    counter === aniList.data.length - 1
-      ? setCounter(0)
-      : setCounter((counter) => counter + 1);
-  }, [aniList, counter]);
-
   useEffect(() => {
-    wrapInner.current.style.transform = `translateX(${-100 * counter}%)`;
-  }, [counter]);
-
-  useEffect(() => {
-    if (stop) {
-      return;
-    }
-    const timeoutFunction = setInterval(sliderInterval, 4000);
-    return () => clearInterval(timeoutFunction);
-  }, [sliderInterval, stop]);
-
-  const onButtonClick = (event) => {
-    setStop(true);
-    if (event.target.parentElement.value === 'r') {
-      counter === aniList.data.length - 1
-        ? setCounter(0)
-        : setCounter(counter + 1);
-    } else {
-      counter === 0
-        ? setCounter(aniList.data.length - 1)
-        : setCounter(counter - 1);
-    }
-  };
+    if (aniList !== '')
+      intervalRef.current = setInterval(() => move('r'), 4000);
+  }, [aniList, move]);
 
   return (
     <div className={styles.container}>
