@@ -1,0 +1,10 @@
+.li {
+  margin-bottom: 5px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  margin-right: 5px;
+}

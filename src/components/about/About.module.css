@@ -1,0 +1,31 @@
+.about {
+  width: 300px;
+  color: #fff;
+  border-radius: 10px;
+  text-align: left;
+  background-color: #303b46e8;
+  padding: 10px;
+}
+
+.info {
+  list-style-type: none;
+}
+
+.about h6 {
+  font-size: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #c0bdbd;
+  margin-bottom: 10px;
+}
+.about p {
+  white-space: pre-line;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.waifu {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  margin-right: 5px;
+}

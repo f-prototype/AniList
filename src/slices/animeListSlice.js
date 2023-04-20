@@ -8,6 +8,7 @@ const initialState = {
   counter: 0,
   age: '',
   sort: 'popularityRank',
+  user: {},
 };
 
 const animeListSlice = createSlice({
@@ -50,6 +51,9 @@ const animeListSlice = createSlice({
     resetGenres: (state, action) => {
       state.genres = [action.payload];
     },
+    selectUser: (state, action) => {
+      state.user = action.payload;
+    },
   },
 });
 
@@ -65,6 +69,7 @@ export const {
   setSort,
   reset,
   resetGenres,
+  selectUser,
 } = animeListSlice.actions;
 
 export default animeListSlice.reducer;

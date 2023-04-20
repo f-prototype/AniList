@@ -49,7 +49,6 @@ export const List = () => {
             <Spinner />
           </div>
         )}
-        {/* <Spinner /> */}
       </div>
       <button onClick={() => onLoadMore(count)} className={styles.btn}>
         More
