@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.h {
+  font-size: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #c0bdbd;
+  margin-bottom: 10px;
+  color: aquamarine;
+  text-align: left;
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.imgContainer {
+  padding: 0px 5px 5px 5px;
+}
+
+.img {
+  width: 90px;
+  height: 145px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.img:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 20px #000;
+}

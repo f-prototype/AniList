@@ -31,7 +31,13 @@ export const Comment = ({ info }) => {
               onClick={() => {
                 localStorage.setItem('user', JSON.stringify(user));
                 dispatch(selectUser(user));
-                navigate(`/users/${user.data.attributes.slug}`);
+                navigate(
+                  `/users/${
+                    user.data.attributes.slug
+                      ? user.data.attributes.slug
+                      : user.data.attributes.name
+                  }`
+                );
               }}
             />
           )}

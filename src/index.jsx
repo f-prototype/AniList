@@ -35,7 +35,7 @@ root.render(
 
 //ФИЛЬТРАЦИЯ КАТЕГОРИЙ
 
-// fetch('https://kitsu.io/api/edge/media-reactions/261/user')
+// fetch('https://kitsu.io/api/edge/media-reactions?filter%5BuserId%5D=94252')
 //   .then((response) => response.json())
 //   .then((result) => console.log(result));
 // fetch('https://kitsu.io/api/edge/anime/11157/genres')
