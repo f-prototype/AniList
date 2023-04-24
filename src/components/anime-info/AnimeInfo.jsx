@@ -10,24 +10,26 @@ export const AnimeInfo = ({ info }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(`https://kitsu.io/api/edge/anime/${info.id}/genres`)
-      .then((response) => response.json())
-      .then((result) => {
-        let genresFetch = [];
-        for (let elem of result.data) {
-          genresFetch.push(
-            <Link
-              to="/"
-              onClick={() => dispatch(resetGenres(elem.attributes.slug))}
-              className={styles.link}
-              key={elem.id}
-            >
-              {elem.attributes.name}
-            </Link>
-          );
-        }
-        genresFetch.length ? setCategories(genresFetch) : setCategories(null);
-      });
+    (async () => {
+      const response = await fetch(
+        `https://kitsu.io/api/edge/anime/${info.id}/genres`
+      );
+      const result = await response.json();
+      let genresFetch = [];
+      for (let elem of result.data) {
+        genresFetch.push(
+          <Link
+            to="/"
+            onClick={() => dispatch(resetGenres(elem.attributes.slug))}
+            className={styles.link}
+            key={elem.id}
+          >
+            {elem.attributes.name}
+          </Link>
+        );
+      }
+      genresFetch.length ? setCategories(genresFetch) : setCategories(null);
+    })();
   }, [dispatch, info]);
 
   return (

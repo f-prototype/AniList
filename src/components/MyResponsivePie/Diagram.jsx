@@ -5,11 +5,11 @@ import styles from './MyResponsivePie.module.css';
 export const MyResponsivePie = ({ user }) => {
   const [stats, setStats] = useState();
   useEffect(() => {
-    fetch(user.data.relationships.stats.links.related)
-      .then((response) => response.json())
-      .then((result) => {
-        setStats(result);
-      });
+    (async () => {
+      const response = await fetch(user.data.relationships.stats.links.related);
+      const result = await response.json();
+      setStats(result);
+    })();
   }, [user]);
   const categories = useMemo(() => {
     if (!stats) return;

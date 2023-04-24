@@ -18,23 +18,23 @@ export const Filters = () => {
     { attributes: { slug: 'summer', title: 'summer' } },
     { attributes: { slug: 'fall', title: 'fall' } },
   ];
-  useMemo(() => {
-    fetch(
-      'https://kitsu.io/api/edge/categories?page%5Blimit%5D=218&page%5Boffset%5D=0'
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        let sorted = result.data.sort((a, b) => {
-          if (a.attributes.slug > b.attributes.slug) {
-            return 1;
-          } else {
-            return -1;
-          }
-        });
-        addGenres(sorted);
-      });
-  }, []);
   const onChange = (value) => dispatch(setAge(value));
+  useMemo(() => {
+    (async () => {
+      const response = await fetch(
+        'https://kitsu.io/api/edge/categories?page%5Blimit%5D=218&page%5Boffset%5D=0'
+      );
+      const result = await response.json();
+      const sorted = result.data.sort((a, b) => {
+        if (a.attributes.slug > b.attributes.slug) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+      addGenres(sorted);
+    })();
+  }, []);
 
   return (
     <form className={styles.container}>

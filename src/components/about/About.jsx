@@ -11,9 +11,13 @@ export default function About({ currentInfo }) {
   const [waifu, setWaifu] = useState(null);
 
   useEffect(() => {
-    fetch(currentInfo.current.data.relationships.waifu.links.related)
-      .then((response) => response.json())
-      .then((result) => setWaifu(result));
+    (async () => {
+      const response = await fetch(
+        currentInfo.current.data.relationships.waifu.links.related
+      );
+      const result = response.json();
+      setWaifu(result);
+    })();
   }, [currentInfo]);
 
   const getInfo = (info) => {

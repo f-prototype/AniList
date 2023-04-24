@@ -12,9 +12,11 @@ export const Comment = ({ info }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
-    fetch(info.relationships.user.links.related)
-      .then((response) => response.json())
-      .then((result) => setUser(result));
+    (async () => {
+      const response = await fetch(info.relationships.user.links.related);
+      const result = await response.json();
+      setUser(result);
+    })();
   }, [info.relationships.user.links.related]);
   return (
     <div className={styles.container}>

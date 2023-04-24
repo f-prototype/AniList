@@ -1,68 +1,46 @@
+import { memo } from 'react';
 import { useState } from 'react';
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import styles from './UserComment.module.css';
 
-export const UserComment = ({ info, user }) => {
+export const UserComment = memo(({ info, user }) => {
   const currentInfo = useRef(info);
   const currentUser = useRef(user);
-  const [anime, setAnime] = useState(null);
-  const [manga, setManga] = useState(null);
+  const [targetInfo, setTargetInfo] = useState({
+    anime: { data: null },
+    manga: { data: null },
+  });
   useEffect(() => {
     (async () => {
       const response = await fetch(
         currentInfo.current.relationships.anime.links.related
       );
       const result = await response.json();
-      setAnime(result);
+      if (result.data) {
+        setTargetInfo((targetInfo) => ({ ...targetInfo, anime: result }));
+        return;
+      }
       const responseManga = await fetch(
         currentInfo.current.relationships.manga.links.related
       );
       const resultManga = await responseManga.json();
-      setManga(resultManga);
+      setTargetInfo((targetInfo) => ({ ...targetInfo, manga: resultManga }));
     })();
   }, []);
 
-  const getCurrentData = () => {
-    if (anime.data) {
-      return (
-        <>
-          <img
-            className={styles.animeImg}
-            src={anime.data.attributes.posterImage.tiny}
-          />
-          <div className={styles.mainInfo}>
-            <div className={styles.animeName}>
-              {anime.data.attributes.canonicalTitle}
-            </div>
-            <div className={styles.description}>
-              {anime.data.attributes.description}
-            </div>
-          </div>
-        </>
-      );
-    } else if (manga) {
-      console.log(manga.data);
-      return (
-        <>
-          <img
-            className={styles.animeImg}
-            src={manga.data.attributes.posterImage.tiny}
-          />
-          <div className={styles.mainInfo}>
-            <div className={styles.animeName}>
-              {manga.data.attributes.canonicalTitle}
-            </div>
-            <div className={styles.description}>
-              {manga.data.attributes.description}
-            </div>
-          </div>
-        </>
-      );
+  const getCurrentInfo = () => {
+    let result;
+    if (targetInfo.anime.data) {
+      result = targetInfo.anime.data;
     } else {
-      return <span>Not Found</span>;
+      result = targetInfo.manga.data;
     }
+    return result;
   };
+
+  const getCurrentData = (data) =>
+    data.slice(0, 10).split('-').reverse().join('.');
 
   return (
     <div className={styles.container}>
@@ -70,24 +48,35 @@ export const UserComment = ({ info, user }) => {
         <img
           className={styles.img}
           src={currentUser.current.data.attributes.avatar.original}
+          alt="img"
         />
         <div className={styles.name}>
           <span>{currentUser.current.data.attributes.name}</span>
-          <p>
-            {currentInfo.current.attributes.createdAt
-              .slice(0, 10)
-              .split('-')
-              .reverse()
-              .join('.')}
-          </p>
+          <p>{getCurrentData(currentInfo.current.attributes.createdAt)}</p>
         </div>
       </div>
       <div>
         <span>{currentInfo.current.attributes.reaction}</span>
       </div>
       <div className={styles.animeInf}>
-        {(anime !== null || manga !== null) && getCurrentData()}
+        {(targetInfo.anime.data || targetInfo.manga.data) && (
+          <>
+            <img
+              className={styles.animeImg}
+              src={getCurrentInfo().attributes.posterImage.tiny}
+              alt="img"
+            />
+            <div className={styles.mainInfo}>
+              <div className={styles.animeName}>
+                {getCurrentInfo().attributes.canonicalTitle}
+              </div>
+              <div className={styles.description}>
+                {getCurrentInfo().attributes.description}
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
-};
+});

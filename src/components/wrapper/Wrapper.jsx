@@ -37,23 +37,30 @@ export const Wrapper = () => {
   };
 
   useEffect(() => {
-    fetch('https://kitsu.io/api/edge/trending/anime')
-      .then((response) => response.json())
-      .then((result) => {
+    (async function fetching() {
+      try {
+        const response = await fetch(
+          'https://kitsu.io/api/edge/trending/anime'
+        );
+        if (response.status !== 200) throw new Error('Invalid Request');
+        const result = await response.json();
         setAniList(result);
-      });
+      } catch (err) {
+        console.log(err);
+        setTimeout(fetching, 4000);
+      }
+    })();
     return () => clearInterval(intervalRef.current);
   }, []);
 
   useEffect(() => {
-    if (aniList !== '')
-      intervalRef.current = setInterval(() => move('r'), 4000);
+    if (aniList.data) intervalRef.current = setInterval(() => move('r'), 4000);
   }, [aniList, move]);
 
   return (
     <div className={styles.container}>
       <div className={styles.wrapInner} ref={wrapInner}>
-        {aniList ? (
+        {aniList.data ? (
           aniList.data.map((elem, index) => {
             return <WrapElem data={elem} rang={index + 1} key={elem.id} />;
           })

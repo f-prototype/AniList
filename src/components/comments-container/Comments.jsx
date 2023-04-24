@@ -7,13 +7,13 @@ export const Comments = ({ id }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    fetch(
-      `https://kitsu.io/api/edge/media-reactions?filter%5BanimeId%5D=${id}&page%5Blimit%5D=6&page%5Boffset%5D=${count}`
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        setComments((comments) => [...comments, ...result.data]);
-      });
+    (async () => {
+      const response = await fetch(
+        `https://kitsu.io/api/edge/media-reactions?filter%5BanimeId%5D=${id}&page%5Blimit%5D=6&page%5Boffset%5D=${count}`
+      );
+      const result = await response.json();
+      setComments((comments) => [...comments, ...result.data]);
+    })();
   }, [id, count]);
 
   return (

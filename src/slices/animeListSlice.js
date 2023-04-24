@@ -1,11 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  list: [],
   genres: ['action'],
   season: ['winter'],
   select: {},
-  counter: 0,
   age: '',
   sort: 'popularityRank',
   user: {},
@@ -15,14 +13,8 @@ const animeListSlice = createSlice({
   name: 'aniList',
   initialState,
   reducers: {
-    setList: (state, action) => {
-      state.list = action.payload;
-    },
     setSelect: (state, action) => {
       state.select = action.payload;
-    },
-    setCounter: (state, action) => {
-      state.counter = action.payload;
     },
     setGenres: (state, action) => {
       state.genres.push(action.payload);
@@ -58,9 +50,7 @@ const animeListSlice = createSlice({
 });
 
 export const {
-  setList,
   setSelect,
-  setCounter,
   setGenres,
   removeGenre,
   setSeason,

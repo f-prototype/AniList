@@ -24,6 +24,12 @@ export const UserFavorites = ({ link }) => {
     })();
   }, []);
 
+  const getImg = (elem) => {
+    if (elem.data.type !== 'characters')
+      return elem.data.attributes.posterImage.original;
+    return elem.data.attributes.image.original;
+  };
+
   return (
     <div className={styles.container}>
       {[...favorites].length && (
@@ -34,11 +40,7 @@ export const UserFavorites = ({ link }) => {
               return (
                 <div className={styles.imgContainer} key={el.data.id}>
                   <img
-                    src={
-                      el.data.type === 'anime'
-                        ? el.data.attributes.posterImage.original
-                        : el.data.attributes.image.original
-                    }
+                    src={getImg(el)}
                     alt="img"
                     className={styles.img}
                     onClick={() => {

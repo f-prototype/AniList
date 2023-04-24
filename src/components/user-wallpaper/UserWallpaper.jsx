@@ -1,11 +1,16 @@
 import styles from './UserWallpaper.module.css';
+import defaultImg from '../../img/background.jpg';
 
 export const UserWallpaper = ({ currentInfo }) => {
   return (
     <div className={styles.header}>
       <div className={styles.imgContainer}>
         <img
-          src={currentInfo.data.attributes.coverImage.original}
+          src={
+            currentInfo.data.attributes.coverImage
+              ? currentInfo.data.attributes.coverImage.original
+              : defaultImg
+          }
           className={styles.img}
           alt="background"
         />
