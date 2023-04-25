@@ -54,7 +54,6 @@ export const Wrapper = () => {
   }, [aniList.data]);
 
   useEffect(() => {
-    console.log('qwe');
     if (aniList.data) intervalRef.current = setInterval(() => move('r'), 4000);
     if (stop) clearInterval(intervalRef.current);
     return () => clearInterval(intervalRef.current);
