@@ -40,3 +40,40 @@
 .check:checked::before {
   left: calc(100% - 19px);
 }
+
+@media (max-width: 750px) {
+  .check {
+    min-width: 20px;
+    height: 15px;
+  }
+  .check::after {
+    width: 30px;
+    height: 15px;
+  }
+  .check::before {
+    width: 10px;
+    height: 10px;
+    top: calc(50% - 5px);
+  }
+  .check:checked::before {
+    left: calc(100% - 3px);
+  }
+}
+@media (max-width: 500px) {
+  .check {
+    min-width: 20px;
+    height: 10px;
+  }
+  .check::after {
+    width: 20px;
+    height: 10px;
+  }
+  .check::before {
+    width: 6px;
+    height: 6px;
+    top: 2px;
+  }
+  .check:checked::before {
+    left: calc(100% - 9px);
+  }
+}

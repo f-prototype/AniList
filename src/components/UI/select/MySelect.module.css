@@ -60,7 +60,6 @@
 
 .genresContainer::-webkit-scrollbar-thumb {
   width: 5px;
-  height: 15px;
   background-color: #313a3f;
   border-radius: 3px;
 }
@@ -106,4 +105,71 @@
 
 .rotate::after {
   transform: rotate(-90deg);
+}
+@media (max-width: 1000px) {
+  .container {
+    margin-bottom: 5px;
+  }
+  .container:has(.block) {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  .container {
+    font-size: 14px;
+    min-width: 1px;
+    min-height: 1px;
+    align-items: flex-start;
+  }
+  .default,
+  .genresContainer {
+    width: 120px;
+  }
+
+  .label {
+    font-size: 10px;
+  }
+  .block {
+    height: 130px;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    font-size: 10px;
+  }
+  .default,
+  .genresContainer {
+    width: 60px;
+  }
+
+  .default {
+    height: 20px;
+    padding-right: 5px;
+  }
+
+  .default::after {
+    width: 10px;
+    height: 10px;
+    right: 1px;
+    top: calc(50% - 5px);
+  }
+
+  .label {
+    font-size: 6px;
+    padding: 2px;
+    min-height: 20px;
+  }
+  .block {
+    height: 125px;
+  }
+  .genresContainer::-webkit-scrollbar {
+    width: 2px;
+    background: transparent;
+  }
+  .genresContainer::-webkit-scrollbar-thumb {
+    width: 2px;
+    background-color: rgb(9, 9, 12);
+  }
 }

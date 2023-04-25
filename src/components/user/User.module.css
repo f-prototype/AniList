@@ -10,3 +10,14 @@
   margin: auto;
   margin-bottom: 30px;
 }
+
+@media (max-width: 1150px) {
+  .main {
+    flex-direction: column-reverse;
+  }
+}
+@media (max-width: 350px) {
+  .main {
+    width: 100%;
+  }
+}

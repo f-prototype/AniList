@@ -54,6 +54,10 @@
 .animeName {
   color: aquamarine;
   font-size: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .mainInfo {
@@ -69,7 +73,15 @@
   font-weight: 300;
   height: 40px;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+@media (max-width: 350px) {
+  .container {
+    width: calc(100% - 20px);
+    margin: 0px 10px;
+    margin-bottom: 20px;
+  }
 }

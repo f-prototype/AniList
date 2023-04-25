@@ -5,8 +5,10 @@
 }
 
 .reset {
+  width: 30px;
+  height: 30px;
   display: flex;
-  height: 35px;
+  justify-content: center;
   align-items: center;
   background-color: #566269;
   color: #dadada;
@@ -17,7 +19,30 @@
   transition: all 0.2s linear;
 }
 
+.btnBack {
+  width: 20px;
+  height: 20px;
+}
+
 .reset:hover {
   transform: scale(0.95);
   filter: brightness(0.9);
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: 200px;
+    flex-direction: column;
+  }
+}
+@media (max-width: 500px) {
+  .btnBack {
+    width: 10px;
+    height: 10px;
+  }
+  .reset {
+    padding: 0px;
+    width: 20px;
+    height: 20px;
+  }
 }

@@ -33,3 +33,22 @@
   margin-right: 5px;
   object-fit: cover;
 }
+
+@media (max-width: 1150px) {
+  .about {
+    width: calc(100% - 350px);
+  }
+}
+@media (max-width: 700px) {
+  .about {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 350px) {
+  .about {
+    width: 300px;
+    margin: 0px 10px;
+    margin-bottom: 20px;
+  }
+}

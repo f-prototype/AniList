@@ -11,8 +11,21 @@
 
 .logo {
   margin-left: 55px;
+  display: flex;
+  align-items: center;
 }
 
 .back {
   background-color: #303b46e8;
+}
+
+@media (max-width: 800px) {
+  .logo {
+    margin-left: 15px;
+  }
+}
+@media (max-width: 500px) {
+  .logo img {
+    width: 100px;
+  }
 }

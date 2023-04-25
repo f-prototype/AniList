@@ -35,3 +35,27 @@
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 1000px) {
+  .container {
+    padding: 0px;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    justify-content: space-around;
+    padding: 0px 40px;
+  }
+  .btn {
+    width: 70px;
+    height: min-content;
+    font-size: 10px;
+    padding: 7px 12px;
+  }
+}
+@media (max-width: 400px) {
+  .container {
+    padding: 0px 5px;
+  }
+}

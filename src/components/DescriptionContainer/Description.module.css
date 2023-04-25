@@ -21,3 +21,22 @@
     text-align: left;
   }
 }
+@media (max-width: 500px) {
+  .descriptionContainer {
+    padding: 0px 10px;
+  }
+  .description h2 {
+    font-size: 18px;
+  }
+  .description p {
+    font-size: 14px;
+  }
+}
+@media (max-width: 400px) {
+  .description h2 {
+    font-size: 16px;
+  }
+  .description p {
+    font-size: 12px;
+  }
+}

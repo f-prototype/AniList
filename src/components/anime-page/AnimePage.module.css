@@ -11,3 +11,14 @@
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+@media (max-width: 660px) {
+  .name {
+    font-size: 21px;
+  }
+}
+@media (max-width: 500px) {
+  .container {
+    width: 100%;
+  }
+}

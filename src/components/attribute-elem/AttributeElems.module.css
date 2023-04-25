@@ -10,15 +10,27 @@
 .status {
   width: 25%;
   text-align: left;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .statusInfo {
+  display: flex;
+  flex-wrap: wrap;
   width: 70%;
   text-align: left;
   padding-left: 10px;
 }
 
+@media (max-width: 750px) {
+  .attributeElem {
+    font-size: 14px;
+  }
+}
+@media (max-width: 500px) {
+  .attributeElem {
+    margin-left: 0px;
+  }
+}
 @media (max-width: 460px) {
   .status {
     font-size: 14px;

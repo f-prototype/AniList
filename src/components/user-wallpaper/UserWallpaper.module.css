@@ -101,3 +101,19 @@
   color: #ccc;
   font-size: 14px;
 }
+
+@media (max-width: 500px) {
+  .avatarContainer {
+    width: 70px;
+    height: 70px;
+  }
+  .name {
+    font-size: 20px;
+  }
+  .btn {
+    padding: 8px 25px;
+  }
+  .header {
+    height: 350px;
+  }
+}

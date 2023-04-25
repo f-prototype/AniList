@@ -34,3 +34,20 @@
   transform: scale(1.1);
   box-shadow: 0px 0px 20px #000;
 }
+
+@media (max-width: 1150px) {
+  .images {
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 450px) {
+  .images {
+    justify-content: center;
+  }
+}
+@media (max-width: 350px) {
+  .h {
+    margin: 0px 10px;
+    margin-bottom: 10px;
+  }
+}

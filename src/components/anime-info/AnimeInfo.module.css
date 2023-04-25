@@ -23,14 +23,17 @@
     align-items: center;
   }
   .attributesContainer {
-    width: 90%;
+    width: 100%;
     margin-top: 20px;
   }
+  .imgContainer {
+    width: 200px;
+    height: 300px;
+  }
 }
-
-@media (max-width: 460px) {
+@media (max-width: 500px) {
   .attributesContainer {
-    width: 95%;
+    padding: 0px 10px;
   }
 }
 

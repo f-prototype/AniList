@@ -46,6 +46,9 @@
   font-size: 11px;
   color: #ccc;
 }
+.name {
+  color: aquamarine;
+}
 
 .likes {
   display: flex;

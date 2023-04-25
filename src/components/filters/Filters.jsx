@@ -6,6 +6,7 @@ import { setSeason, removeSeason } from '../../slices/animeListSlice';
 import MultiRangeSlider from '../multiRangeSlider/MultiRangeSlider';
 import { setAge } from '../../slices/animeListSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import clear from '../../img/svg/clear.svg';
 
 export const Filters = () => {
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ export const Filters = () => {
         }}
         className={styles.reset}
       >
-        Clear Filters
+        <img className={styles.btnBack} src={clear} />
       </span>
     </form>
   );
