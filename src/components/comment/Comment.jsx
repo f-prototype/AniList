@@ -1,11 +1,10 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { selectUser } from '../../slices/animeListSlice';
-import like from '../../img/like.svg';
+import like from '../../img/svg/like.svg';
 import styles from './Comment.module.css';
-import anonim from '../../img/user.svg';
+import anonim from '../../img/svg/user.svg';
 
 export const Comment = ({ info }) => {
   const [user, setUser] = useState();

@@ -1,6 +1,6 @@
-import style from './Video.module.css';
-import video from '../../video/Rick Astley - Never Gonna Give You Up.mp4';
 import { AnimeEpisodes } from '../anime-episodes/AnimeEpisodes';
+import video from '../../video/Rick Astley - Never Gonna Give You Up.mp4';
+import style from './Video.module.css';
 
 export const Video = ({ id }) => {
   return (

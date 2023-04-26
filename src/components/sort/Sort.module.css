@@ -23,7 +23,7 @@
   content: '';
   width: 24px;
   height: 24px;
-  background: url('../../img/right.svg');
+  background: url('../../img/svg/right.svg');
   background-size: cover;
   transform: rotate(90deg);
   filter: invert(1);

@@ -1,11 +1,11 @@
-import styles from './WrapElemInfo.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux/es/exports';
 import { setSelect } from '../../slices/animeListSlice';
-import child from '../../img/child.svg';
-import timer from '../../img/time.svg';
-import play from '../../img/play.svg';
-import rating from '../../img/rating.svg';
+import child from '../../img/svg/child.svg';
+import timer from '../../img/svg/time.svg';
+import play from '../../img/svg/play.svg';
+import rating from '../../img/svg/rating.svg';
+import styles from './WrapElemInfo.module.css';
 
 export const WrapElemInfo = ({ data, raiting }) => {
   const navigate = useNavigate();

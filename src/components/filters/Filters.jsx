@@ -1,11 +1,11 @@
-import { MySelect } from '../UI/select/MySelect';
 import { useState, useMemo } from 'react';
-import styles from './Filters.module.css';
+import { useDispatch, useSelector } from 'react-redux';
 import { setGenres, removeGenre, reset } from '../../slices/animeListSlice';
 import { setSeason, removeSeason } from '../../slices/animeListSlice';
-import MultiRangeSlider from '../multiRangeSlider/MultiRangeSlider';
 import { setAge } from '../../slices/animeListSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import MultiRangeSlider from '../multiRangeSlider/MultiRangeSlider';
+import { MySelect } from '../UI/select/MySelect';
+import styles from './Filters.module.css';
 import clear from '../../img/svg/clear.svg';
 
 export const Filters = () => {
@@ -62,7 +62,7 @@ export const Filters = () => {
         }}
         className={styles.reset}
       >
-        <img className={styles.btnBack} src={clear} />
+        <img className={styles.btnBack} src={clear} alt="clear" />
       </span>
     </form>
   );

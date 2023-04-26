@@ -1,6 +1,6 @@
+import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { setSort } from '../../slices/animeListSlice';
-import { useRef } from 'react';
 import styles from './Sort.module.css';
 
 export const Sort = () => {

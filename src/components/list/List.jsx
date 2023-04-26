@@ -1,9 +1,8 @@
+import { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { useCallback } from 'react';
-import { useEffect, useState } from 'react';
-import styles from './List.module.css';
 import ListElem from '../list-elem/ListElem';
 import { Spinner } from '../spiner/Spinner';
+import styles from './List.module.css';
 
 export const List = () => {
   const [count, setCount] = useState(0);

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import style from './ListElem.module.css';
-import rating from '../../img/popcorn.svg';
-import top from '../../img/top.svg';
 import { useDispatch } from 'react-redux';
 import { setSelect } from '../../slices/animeListSlice';
+import rating from '../../img/svg/popcorn.svg';
+import top from '../../img/svg/top.svg';
+import style from './ListElem.module.css';
 
 function ListElem({ info }) {
   const dispatch = useDispatch();

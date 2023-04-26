@@ -1,10 +1,9 @@
+import { useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useRef } from 'react';
-import { UserInfo } from '../user-info/UserInfo';
-import styles from './User.module.css';
-import { UserCommentsList } from '../user-comments-list/UserCommentsList';
 import { UserWallpaper } from '../user-wallpaper/UserWallpaper';
-import { useEffect } from 'react';
+import { UserInfo } from '../user-info/UserInfo';
+import { UserCommentsList } from '../user-comments-list/UserCommentsList';
+import styles from './User.module.css';
 
 export const User = () => {
   const info = useSelector((state) => state.animeList.user);

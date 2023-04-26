@@ -1,7 +1,4 @@
-import { memo } from 'react';
-import { useState } from 'react';
-import { useRef } from 'react';
-import { useEffect } from 'react';
+import { useState, useRef, useEffect, memo } from 'react';
 import styles from './UserComment.module.css';
 
 export const UserComment = memo(({ info, user }) => {

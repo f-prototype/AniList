@@ -1,5 +1,5 @@
-import styles from './CheckBox.module.css';
 import { useDispatch } from 'react-redux';
+import styles from './CheckBox.module.css';
 
 export const CheckBox = ({ inf, callbaks, check }) => {
   const dispatch = useDispatch();

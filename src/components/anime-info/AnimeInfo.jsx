@@ -1,8 +1,8 @@
-import { AttributeElem } from '../attribute-elem/AttributeElem';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { resetGenres } from '../../slices/animeListSlice';
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { AttributeElem } from '../attribute-elem/AttributeElem';
 import styles from './AnimeInfo.module.css';
 
 export const AnimeInfo = ({ info }) => {

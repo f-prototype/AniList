@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { useRef } from 'react';
-import search from '../../img/search.png';
+import { useState, useRef } from 'react';
 import { SearchElem } from '../search-elem/SearchElem';
+import search from '../../img/search.png';
 import styles from './Form.module.css';
 
 export const Form = () => {

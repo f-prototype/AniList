@@ -1,6 +1,6 @@
-import styles from './Comments.module.css';
 import { useState, useEffect } from 'react';
 import { Comment } from '../comment/Comment';
+import styles from './Comments.module.css';
 
 export const Comments = ({ id }) => {
   const [comments, setComments] = useState([]);

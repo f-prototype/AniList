@@ -1,5 +1,5 @@
-import styles from './Episode.module.css';
 import { useEffect, useRef, useState } from 'react';
+import styles from './Episode.module.css';
 
 export const AnimeEpisodes = ({ id }) => {
   const [episodes, setEpisodes] = useState(null);

@@ -1,10 +1,10 @@
-import styles from './AnimePage.module.css';
+import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import styles from './AnimePage.module.css';
 import { AnimeInfo } from '../anime-info/AnimeInfo';
 import { Description } from '../DescriptionContainer/Description';
 import { Video } from '../VideoContainer/Video';
 import { Comments } from '../comments-container/Comments';
-import { useEffect, useRef } from 'react';
 
 export const AnimePage = () => {
   const info = useSelector((state) => state.animeList.select);

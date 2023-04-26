@@ -1,8 +1,8 @@
 import { useRef, useEffect, useState, useCallback } from 'react';
 import { WrapElem } from '../wrap-elem/WrapElem';
 import { Spinner } from '../spiner/Spinner';
-import btnLeft from '../../img/left.svg';
-import btnRight from '../../img/right.svg';
+import btnLeft from '../../img/svg/left.svg';
+import btnRight from '../../img/svg/right.svg';
 import styles from './Wrapper.module.css';
 
 export const Wrapper = () => {

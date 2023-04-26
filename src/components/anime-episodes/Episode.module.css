@@ -16,7 +16,7 @@
   height: 20px;
   top: 5px;
   right: 3px;
-  background-image: url('../../img/right.svg');
+  background-image: url('../../img/svg/right.svg');
   background-size: cover;
   transform: rotate(90deg);
   filter: invert(1);
