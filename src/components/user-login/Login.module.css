@@ -141,3 +141,29 @@
 .open {
   display: block;
 }
+
+@media (max-width: 450px) {
+  .login {
+    width: 320px;
+    min-height: 320px;
+  }
+  .main {
+    padding: 20px;
+  }
+  .imgContainer {
+    height: 200px;
+  }
+  .main p {
+    font-size: 14px;
+  }
+  .input {
+    margin-bottom: 15px;
+  }
+  .description {
+    font-size: 10px !important;
+  }
+  .btn {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
