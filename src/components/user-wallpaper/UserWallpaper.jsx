@@ -1,7 +1,7 @@
 import styles from './UserWallpaper.module.css';
 import defaultImg from '../../img/background.jpg';
 
-export const UserWallpaper = ({ currentInfo }) => {
+export const UserWallpaper = ({ currentInfo, addModal }) => {
   return (
     <div className={styles.header}>
       <div className={styles.imgContainer}>
@@ -25,7 +25,7 @@ export const UserWallpaper = ({ currentInfo }) => {
         </div>
         <div className={styles.mainInfo}>
           <div className={styles.name}>{currentInfo.data.attributes.name}</div>
-          <button className={styles.btn}>
+          <button className={styles.btn} onClick={() => addModal(true)}>
             <span>Subscribe</span>
           </button>
         </div>

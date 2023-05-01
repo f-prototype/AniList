@@ -4,6 +4,8 @@ import { UserWallpaper } from '../user-wallpaper/UserWallpaper';
 import { UserInfo } from '../user-info/UserInfo';
 import { UserCommentsList } from '../user-comments-list/UserCommentsList';
 import styles from './User.module.css';
+import { Login } from '../user-login/Login';
+import { useState } from 'react';
 
 export const User = () => {
   const info = useSelector((state) => state.animeList.user);
@@ -11,6 +13,7 @@ export const User = () => {
   const currentInfo = useRef(
     Object.keys(info).length ? info : localInfo.current
   );
+  const [register, setRegister] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -18,10 +21,11 @@ export const User = () => {
 
   return (
     <div className={styles.container}>
-      <UserWallpaper currentInfo={currentInfo.current} />
+      <UserWallpaper currentInfo={currentInfo.current} addModal={setRegister} />
       <div className={styles.main}>
         <UserCommentsList user={currentInfo.current} />
         <UserInfo currentInfo={currentInfo} />
+        <Login register={register} setRegister={setRegister} />
       </div>
     </div>
   );
