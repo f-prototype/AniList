@@ -12,7 +12,6 @@ function ListElem({ info }) {
       <div
         className={style.elem}
         onClick={() => {
-          localStorage.setItem('anime', JSON.stringify(info));
           dispatch(setState({ value: info, name: 'select' }));
         }}
       >

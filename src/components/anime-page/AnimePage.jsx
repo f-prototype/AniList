@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './AnimePage.module.css';
 import { AnimeInfo } from '../anime-info/AnimeInfo';
@@ -8,7 +8,6 @@ import { Comments } from '../comments-container/Comments';
 
 export const AnimePage = () => {
   const info = useSelector((state) => state.animeList.select);
-  const localInfo = useRef(JSON.parse(localStorage.getItem('anime')));
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -16,17 +15,11 @@ export const AnimePage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.name}>
-        {Object.keys(info).length
-          ? info.attributes.canonicalTitle
-          : localInfo.current.attributes.canonicalTitle}
-      </h1>
-      <AnimeInfo info={Object.keys(info).length ? info : localInfo.current} />
-      <Description info={Object.keys(info).length ? info : localInfo.current} />
-      <Video id={Object.keys(info).length ? info.id : localInfo.current.id} />
-      <Comments
-        id={Object.keys(info).length ? info.id : localInfo.current.id}
-      />
+      <h1 className={styles.name}>{info.attributes.canonicalTitle}</h1>
+      <AnimeInfo info={info} />
+      <Description info={info} />
+      <Video id={info.id} />
+      <Comments id={info.id} />
     </div>
   );
 };

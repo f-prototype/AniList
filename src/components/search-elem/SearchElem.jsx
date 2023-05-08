@@ -11,7 +11,6 @@ export const SearchElem = ({ inf }) => {
       className={styles.searchElem}
       onClick={() => {
         dispatch(setState({ value: inf, name: 'select' }));
-        localStorage.setItem('anime', JSON.stringify(inf));
         navigate(inf.attributes.slug);
       }}
     >

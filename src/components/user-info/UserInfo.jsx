@@ -7,9 +7,9 @@ export const UserInfo = ({ currentInfo }) => {
   return (
     <div className={styles.info}>
       <About currentInfo={currentInfo} />
-      <Statistics user={currentInfo.current} />
+      <Statistics user={currentInfo} />
       <UserFavorites
-        link={currentInfo.current.data.relationships.favorites.links.related}
+        link={currentInfo.data.relationships.favorites.links.related}
       />
     </div>
   );

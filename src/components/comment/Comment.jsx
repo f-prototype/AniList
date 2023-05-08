@@ -30,7 +30,6 @@ export const Comment = ({ info }) => {
               }
               alt="11"
               onClick={() => {
-                localStorage.setItem('user', JSON.stringify(user));
                 dispatch(setState({ value: user, name: 'user' }));
                 navigate(
                   `/users/${

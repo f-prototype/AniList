@@ -24,13 +24,13 @@ export default function About({ currentInfo }) {
   return (
     <div className={styles.about}>
       <h6>About</h6>
-      <p>{currentInfo.current.data.attributes.about}</p>
+      <p>{currentInfo.data.attributes.about}</p>
 
       <ul className={styles.info}>
         {waifu !== null && waifu.data && (
           <MyLi
             img={partner}
-            name={currentInfo.current.data.attributes.waifuOrHusbando + ':'}
+            name={currentInfo.data.attributes.waifuOrHusbando + ':'}
           >
             <>
               <span>
@@ -45,16 +45,16 @@ export default function About({ currentInfo }) {
           </MyLi>
         )}
         <MyLi img={genger} name="Gender:">
-          {<span>{getInfo(currentInfo.current.data.attributes.gender)}</span>}
+          {<span>{getInfo(currentInfo.data.attributes.gender)}</span>}
         </MyLi>
         <MyLi img={location} name="Location:">
-          <span>{getInfo(currentInfo.current.data.attributes.location)}</span>
+          <span>{getInfo(currentInfo.data.attributes.location)}</span>
         </MyLi>
         <MyLi img={birthday} name="Birthday:">
-          <span>{getDate(currentInfo.current.data.attributes.birthday)}</span>
+          <span>{getDate(currentInfo.data.attributes.birthday)}</span>
         </MyLi>
         <MyLi img={calendar} name="Created:">
-          <span>{getDate(currentInfo.current.data.attributes.createdAt)}</span>
+          <span>{getDate(currentInfo.data.attributes.createdAt)}</span>
         </MyLi>
       </ul>
     </div>
