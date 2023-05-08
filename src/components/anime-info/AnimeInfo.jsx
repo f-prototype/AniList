@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { resetGenres } from '../../slices/animeListSlice';
+import { setState } from '../../slices/animeListSlice';
 import { AttributeElem } from '../attribute-elem/AttributeElem';
 import styles from './AnimeInfo.module.css';
 
@@ -20,7 +20,11 @@ export const AnimeInfo = ({ info }) => {
         genresFetch.push(
           <Link
             to="/"
-            onClick={() => dispatch(resetGenres(elem.attributes.slug))}
+            onClick={() =>
+              dispatch(
+                setState({ value: [elem.attributes.slug], name: 'genres' })
+              )
+            }
             className={styles.link}
             key={elem.id}
           >

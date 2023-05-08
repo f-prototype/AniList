@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
-import { setSort } from '../../slices/animeListSlice';
+import { setState } from '../../slices/animeListSlice';
 import styles from './Sort.module.css';
 
 export const Sort = () => {
@@ -12,9 +12,14 @@ export const Sort = () => {
     let value = event.target.innerHTML;
     ref.current.innerHTML = value;
     if (value === 'Popularity') {
-      dispatch(setSort(value.toLowerCase() + 'Rank'));
+      dispatch(setState({ value: value.toLowerCase() + 'Rank', name: 'sort' }));
     } else {
-      dispatch(setSort('-' + value.toLowerCase() + 'Rating'));
+      dispatch(
+        setState({
+          value: '-' + value.toLowerCase() + 'Rating',
+          name: 'sort',
+        })
+      );
     }
   };
 

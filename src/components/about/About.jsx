@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getInfo, getDate } from '../../utils/About';
 import { MyLi } from '../UI/li/MyLi';
 import partner from '../../img/svg/heart.svg';
 import genger from '../../img/svg/user.svg';
@@ -19,15 +20,6 @@ export default function About({ currentInfo }) {
       setWaifu(result);
     })();
   }, [currentInfo]);
-
-  const getInfo = (info) => {
-    if (info !== null && info !== '') return info;
-    return 'secret';
-  };
-
-  const getDate = (info) => {
-    return getInfo(info).slice(0, 10).split('-').reverse().join('.');
-  };
 
   return (
     <div className={styles.about}>

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux/es/exports';
-import { setSelect } from '../../slices/animeListSlice';
+import { setState } from '../../slices/animeListSlice';
 import child from '../../img/svg/child.svg';
 import timer from '../../img/svg/time.svg';
 import play from '../../img/svg/play.svg';
@@ -45,7 +45,7 @@ export const WrapElemInfo = ({ data, raiting }) => {
       <button
         className={styles.btn}
         onClick={() => {
-          dispatch(setSelect(data));
+          dispatch(setState({ value: data, name: 'select' }));
           navigate(data.attributes.slug);
         }}
       >

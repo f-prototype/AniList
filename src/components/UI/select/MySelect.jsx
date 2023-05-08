@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { CheckBox } from '../checkbox/CheckBox';
 import styles from './MySelect.module.css';
 
-export const MySelect = ({ elems, def, callbaks, select }) => {
+export const MySelect = ({ elems, def, select, name }) => {
   const ref = useRef(null);
 
   const onSelectClick = (event) => {
@@ -33,8 +33,8 @@ export const MySelect = ({ elems, def, callbaks, select }) => {
               <label className={styles.label}>
                 <CheckBox
                   inf={el.attributes.slug}
-                  callbaks={callbaks}
                   check={select.includes(el.attributes.slug)}
+                  name={name}
                 />
                 <span>{el.attributes.title}</span>
               </label>

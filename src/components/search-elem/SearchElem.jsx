@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { setSelect } from '../../slices/animeListSlice';
+import { setState } from '../../slices/animeListSlice';
 import styles from './SearchElem.module.css';
 
 export const SearchElem = ({ inf }) => {
@@ -10,7 +10,7 @@ export const SearchElem = ({ inf }) => {
     <div
       className={styles.searchElem}
       onClick={() => {
-        dispatch(setSelect(inf));
+        dispatch(setState({ value: inf, name: 'select' }));
         localStorage.setItem('anime', JSON.stringify(inf));
         navigate(inf.attributes.slug);
       }}

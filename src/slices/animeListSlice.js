@@ -13,53 +13,23 @@ const animeListSlice = createSlice({
   name: 'aniList',
   initialState,
   reducers: {
-    setSelect: (state, action) => {
-      state.select = action.payload;
+    pushInState: (state, action) => {
+      const { name, value } = action.payload;
+      state[name].push(value);
     },
-    setGenres: (state, action) => {
-      state.genres.push(action.payload);
+    removeFromState: (state, action) => {
+      const { name, value } = action.payload;
+      state[name] = state[name].filter((elem) => elem !== value);
     },
-    removeGenre: (state, action) => {
-      state.genres = state.genres.filter((genre) => genre !== action.payload);
-    },
-    setSeason: (state, action) => {
-      state.season.push(action.payload);
-    },
-    removeSeason: (state, action) => {
-      state.season = state.season.filter((genre) => genre !== action.payload);
-    },
-    setAge: (state, action) => {
-      state.age = action.payload;
-    },
-    setSort: (state, action) => {
-      state.sort = action.payload;
-    },
-    reset: (state) => {
-      state.genres = ['action'];
-      state.season = ['winter'];
-      state.age = '';
-      state.sort = 'popularityRank';
-    },
-    resetGenres: (state, action) => {
-      state.genres = [action.payload];
-    },
-    selectUser: (state, action) => {
-      state.user = action.payload;
+    resetState: (state) => (state = initialState),
+    setState: (state, action) => {
+      const { name, value } = action.payload;
+      state[name] = value;
     },
   },
 });
 
-export const {
-  setSelect,
-  setGenres,
-  removeGenre,
-  setSeason,
-  removeSeason,
-  setAge,
-  setSort,
-  reset,
-  resetGenres,
-  selectUser,
-} = animeListSlice.actions;
+export const { resetState, setState, pushInState, removeFromState } =
+  animeListSlice.actions;
 
 export default animeListSlice.reducer;

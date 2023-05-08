@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { setSelect } from '../../slices/animeListSlice';
+import { setState } from '../../slices/animeListSlice';
 import styles from './UserFavorites.module.css';
 
 export const UserFavorites = ({ link }) => {
@@ -45,7 +45,7 @@ export const UserFavorites = ({ link }) => {
                     className={styles.img}
                     onClick={() => {
                       if (el.data.type !== 'anime') return;
-                      dispatch(setSelect(el.data));
+                      dispatch(setState({ value: el.data, name: 'select' }));
                       localStorage.setItem('anime', JSON.stringify(el.data));
                       navigate('/' + el.data.attributes.slug);
                     }}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { selectUser } from '../../slices/animeListSlice';
+import { setState } from '../../slices/animeListSlice';
 import like from '../../img/svg/like.svg';
 import styles from './Comment.module.css';
 import anonim from '../../img/svg/user.svg';
@@ -31,7 +31,7 @@ export const Comment = ({ info }) => {
               alt="11"
               onClick={() => {
                 localStorage.setItem('user', JSON.stringify(user));
-                dispatch(selectUser(user));
+                dispatch(setState({ value: user, name: 'user' }));
                 navigate(
                   `/users/${
                     user.data.attributes.slug

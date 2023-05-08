@@ -1,8 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setGenres, removeGenre, reset } from '../../slices/animeListSlice';
-import { setSeason, removeSeason } from '../../slices/animeListSlice';
-import { setAge } from '../../slices/animeListSlice';
+import { setState, resetState } from '../../slices/animeListSlice';
 import MultiRangeSlider from '../multiRangeSlider/MultiRangeSlider';
 import { MySelect } from '../UI/select/MySelect';
 import styles from './Filters.module.css';
@@ -19,7 +17,7 @@ export const Filters = () => {
     { attributes: { slug: 'summer', title: 'summer' } },
     { attributes: { slug: 'fall', title: 'fall' } },
   ];
-  const onChange = (value) => dispatch(setAge(value));
+  const onChange = (value) => dispatch(setState({ name: 'age', value }));
   useMemo(() => {
     (async () => {
       const response = await fetch(
@@ -42,13 +40,13 @@ export const Filters = () => {
       <MySelect
         elems={genres}
         def="Genres"
-        callbaks={{ addInf: setGenres, removeInf: removeGenre }}
+        name="genres"
         select={selectGenres}
       />
       <MySelect
         elems={seasons}
         def="Seasons"
-        callbaks={{ addInf: setSeason, removeInf: removeSeason }}
+        name="season"
         select={selectSeasons}
       />
       <MultiRangeSlider
@@ -58,7 +56,7 @@ export const Filters = () => {
       />
       <span
         onClick={() => {
-          dispatch(reset());
+          dispatch(resetState());
         }}
         className={styles.reset}
       >

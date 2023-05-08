@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setSelect } from '../../slices/animeListSlice';
+import { setState } from '../../slices/animeListSlice';
 import rating from '../../img/svg/popcorn.svg';
 import top from '../../img/svg/top.svg';
 import style from './ListElem.module.css';
@@ -13,7 +13,7 @@ function ListElem({ info }) {
         className={style.elem}
         onClick={() => {
           localStorage.setItem('anime', JSON.stringify(info));
-          dispatch(setSelect(info));
+          dispatch(setState({ value: info, name: 'select' }));
         }}
       >
         <div className={style.imgContainer}>
