@@ -136,6 +136,34 @@
 }
 
 @media (max-width: 500px) {
+  .default,
+  .genresContainer {
+    width: 100px;
+  }
+  .default {
+    font-size: 12px;
+  }
+  .default::after {
+    width: 16px;
+    height: 16px;
+    right: 4px;
+    top: calc(50% - 8px);
+  }
+}
+@media (max-width: 370px) {
+  .default,
+  .genresContainer {
+    width: 90px;
+  }
+  .default {
+    height: 30px;
+  }
+  .default::after {
+    right: 1px;
+  }
+}
+
+/* @media (max-width: 500px) {
   .container {
     font-size: 10px;
   }
@@ -172,4 +200,4 @@
     width: 2px;
     background-color: rgb(9, 9, 12);
   }
-}
+} */

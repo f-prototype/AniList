@@ -1,4 +1,5 @@
 .container {
+  position: relative;
   width: 700px;
   display: flex;
   justify-content: space-evenly;
@@ -31,14 +32,38 @@
 
 @media (max-width: 1000px) {
   .container {
-    width: 200px;
-    flex-direction: column;
+    width: calc(100% - 200px);
+    justify-content: space-between;
+    margin-right: 10px;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 810px) {
+  .container {
+    width: 330px;
+    margin-right: 0px;
+  }
+  .reset {
+    margin-top: 5px;
+  }
+}
+@media (max-width: 750px) {
+  .container {
+    width: 260px;
   }
 }
 @media (max-width: 500px) {
+  .container {
+    width: 210px;
+  }
+}
+@media (max-width: 400px) {
+  .container {
+    justify-content: space-around;
+  }
   .btnBack {
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
   }
   .reset {
     padding: 0px;
