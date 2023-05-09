@@ -4,9 +4,34 @@ import { setState } from '../../slices/animeListSlice';
 import rating from '../../img/svg/popcorn.svg';
 import top from '../../img/svg/top.svg';
 import style from './ListElem.module.css';
+import { useRef } from 'react';
+import { useEffect } from 'react';
 
 function ListElem({ info }) {
   const dispatch = useDispatch();
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const imageObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.src = entry.target.dataset.src;
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        rootMargin: '50px',
+      }
+    );
+    const current = imgRef.current;
+    if (current) imageObserver.observe(current);
+    return () => {
+      if (current) imageObserver.unobserve(current);
+    };
+  }, [imgRef]);
+
   return (
     <Link to={info.attributes.slug} className="link">
       <div
@@ -17,7 +42,9 @@ function ListElem({ info }) {
       >
         <div className={style.imgContainer}>
           <img
-            src={info.attributes.posterImage.original}
+            data-src={info.attributes.posterImage.original}
+            ref={imgRef}
+            // src={info.attributes.posterImage.original}
             alt="img"
             className={style.img}
           />
