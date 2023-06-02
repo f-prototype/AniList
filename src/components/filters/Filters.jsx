@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setState, resetState } from '../../slices/animeListSlice';
 import MultiRangeSlider from '../multiRangeSlider/MultiRangeSlider';
 import { MySelect } from '../UI/select/MySelect';
+import { seasons } from '../../utils/seasons';
 import styles from './Filters.module.css';
 import clear from '../../img/svg/clear.svg';
 
@@ -11,12 +12,6 @@ export const Filters = () => {
   const selectGenres = useSelector((state) => state.animeList.genres);
   const selectSeasons = useSelector((state) => state.animeList.season);
   const [genres, addGenres] = useState([]);
-  const seasons = [
-    { attributes: { slug: 'winter', title: 'winter' } },
-    { attributes: { slug: 'spring', title: 'spring' } },
-    { attributes: { slug: 'summer', title: 'summer' } },
-    { attributes: { slug: 'fall', title: 'fall' } },
-  ];
   const onChange = (value) => dispatch(setState({ name: 'age', value }));
   useMemo(() => {
     (async () => {
